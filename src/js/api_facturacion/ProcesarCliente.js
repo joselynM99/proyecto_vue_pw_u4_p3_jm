@@ -60,7 +60,8 @@ const borrarPorId = async (id) => {
    
 }
 const borrarPorCedula = (cedula) => {
-    console.log(cedula)
+    axios.delete(`http://localhost:8081/API/Facturacion/V1/clientes/porCedula/${cedula}`).then(r=>r.data)
+   
 }
 //Expone un solo método
 //export default obtenerPorCedulaFachada;

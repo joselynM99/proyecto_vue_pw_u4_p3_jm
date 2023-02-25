@@ -15,11 +15,11 @@
         <input v-model="genero" type="text">
         <label for="">Email:</label>
         <input v-model="email" type="text">
-        <button @click="insertar">Insertar</button>
+        <button @click="borrar">Borrar</button>
     </div>
 </template>
 <script>
-import { obtenerPorCedulaFachada, insertarFachada } from '@/js/api_facturacion/ProcesarCliente';
+import { obtenerPorCedulaFachada, borrarPorCedulaFachada } from '@/js/api_facturacion/ProcesarCliente';
 export default {
     data() {
         return {
@@ -44,17 +44,8 @@ export default {
             this.email = email
         },
 
-        insertar() {
-            const miCliente = {
-                nombre: "Juana",
-                apellido: "Lopez",
-                fechaNacimiento: "2003-02-23T18:17:45",
-                cedula: "17574638843",
-                genero: "FEMENINO",
-                email: "jajshlkd@jjada"
-            }
-
-            insertarFachada(miCliente)
+        borrar() {
+            borrarPorCedulaFachada(this.cedula)
         }
     },
 }

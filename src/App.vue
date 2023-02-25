@@ -1,16 +1,18 @@
 <template>
-  <ActualizarCliente></ActualizarCliente>
+
+  <router-view></router-view>
   
 </template>
 
 <script>
-import ActualizarCliente from './pages/ActualizarCliente.vue';
+
+ 
 
 export default {
   name: 'App',
   components: {
-    ActualizarCliente
-  }
+   
+}
 }
 </script>
 
