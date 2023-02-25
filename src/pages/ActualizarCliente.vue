@@ -1,26 +1,31 @@
 <template>
     <div>
-        <h1>Buscar por cédula</h1>
-        <input v-model="cedula" type="text">
-        <button @click="consultarClientePorCedula">Consultar</button>
-        <label for="">Id:</label>
+        <h1>Actualizar Cliente</h1>
+        <h4>Ingresar el id del cliente que desea actualizar</h4>
         <input v-model="id" type="text">
+        <button @click="buscar">Buscar</button>
+
         <label for="">Nombre:</label>
         <input v-model="nombre" type="text">
         <label for="">Apellido:</label>
         <input v-model="apellido" type="text">
+        <label for="">Cedula:</label>
+        <input v-model="cedula" type="text">
         <label for="">Fecha de nacimiento:</label>
         <input v-model="fechaNacimiento" type="datetime-local">
         <label for="">Genero:</label>
         <input v-model="genero" type="text">
         <label for="">Email:</label>
         <input v-model="email" type="text">
-        <button @click="insertar">Insertar</button>
+        <button @click="actualizarCliente">Actualizar</button>
+
     </div>
 </template>
 <script>
-import { obtenerPorCedulaFachada, insertarFachada } from '@/js/api_facturacion/ProcesarCliente';
+import { actualizarFachada, obtenerPorIdFachada } from '@/js/api_facturacion/ProcesarCliente'
+
 export default {
+
     data() {
         return {
             id: null,
@@ -34,9 +39,21 @@ export default {
     },
 
     methods: {
-        async consultarClientePorCedula() {
-            const { nombre, apellido, id, fechaNacimiento, genero, email } = await obtenerPorCedulaFachada(this.cedula)
-            this.id = id
+        actualizarCliente() {
+            const miCliente = {
+                nombre: this.nombre,
+                apellido: this.apellido,
+                fechaNacimiento: this.fechaNacimiento,
+                cedula: this.cedula,
+                genero: this.genero,
+                email: this.email
+            }
+
+            actualizarFachada(this.id, miCliente)
+        },
+        async buscar() {
+            const { nombre, apellido, cedula, fechaNacimiento, genero, email } = await obtenerPorIdFachada(this.id)
+            this.cedula = cedula
             this.nombre = nombre
             this.apellido = apellido
             this.fechaNacimiento = fechaNacimiento
@@ -44,19 +61,8 @@ export default {
             this.email = email
         },
 
-        insertar() {
-            const miCliente = {
-                nombre: "Juana",
-                apellido: "Lopez",
-                fechaNacimiento: "2003-02-23T18:17:45",
-                cedula: "17574638843",
-                genero: "FEMENINO",
-                email: "jajshlkd@jjada"
-            }
-
-            insertarFachada(miCliente)
-        }
     },
+
 }
 </script>
 <style>

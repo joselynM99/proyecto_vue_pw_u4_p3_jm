@@ -1,26 +1,28 @@
 <template>
     <div>
-        <h1>Buscar por cédula</h1>
-        <input v-model="cedula" type="text">
-        <button @click="consultarClientePorCedula">Consultar</button>
-        <label for="">Id:</label>
-        <input v-model="id" type="text">
+        <h1>Insertar Cliente</h1>
+
         <label for="">Nombre:</label>
         <input v-model="nombre" type="text">
         <label for="">Apellido:</label>
         <input v-model="apellido" type="text">
+        <label for="">Cedula:</label>
+        <input v-model="cedula" type="text">
         <label for="">Fecha de nacimiento:</label>
         <input v-model="fechaNacimiento" type="datetime-local">
         <label for="">Genero:</label>
         <input v-model="genero" type="text">
         <label for="">Email:</label>
         <input v-model="email" type="text">
-        <button @click="insertar">Insertar</button>
+        <button @click="insertarCliente">Insertar</button>
+
     </div>
 </template>
 <script>
-import { obtenerPorCedulaFachada, insertarFachada } from '@/js/api_facturacion/ProcesarCliente';
+import { insertarFachada } from '@/js/api_facturacion/ProcesarCliente'
+
 export default {
+
     data() {
         return {
             id: null,
@@ -34,29 +36,21 @@ export default {
     },
 
     methods: {
-        async consultarClientePorCedula() {
-            const { nombre, apellido, id, fechaNacimiento, genero, email } = await obtenerPorCedulaFachada(this.cedula)
-            this.id = id
-            this.nombre = nombre
-            this.apellido = apellido
-            this.fechaNacimiento = fechaNacimiento
-            this.genero = genero
-            this.email = email
-        },
-
-        insertar() {
+        insertarCliente() {
             const miCliente = {
-                nombre: "Juana",
-                apellido: "Lopez",
-                fechaNacimiento: "2003-02-23T18:17:45",
-                cedula: "17574638843",
-                genero: "FEMENINO",
-                email: "jajshlkd@jjada"
+                nombre: this.nombre,
+                apellido: this.apellido,
+                fechaNacimiento: this.fechaNacimiento,
+                cedula: this.cedula,
+                genero: this.genero,
+                email: this.email
             }
 
             insertarFachada(miCliente)
         }
+
     },
+
 }
 </script>
 <style>

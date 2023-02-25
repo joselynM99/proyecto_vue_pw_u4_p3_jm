@@ -1,15 +1,15 @@
 <template>
-  <BuscarPorCedula></BuscarPorCedula>
+  <ActualizarCliente></ActualizarCliente>
   
 </template>
 
 <script>
-import BuscarPorCedula from './pages/BuscarPorCedula.vue';
+import ActualizarCliente from './pages/ActualizarCliente.vue';
 
 export default {
   name: 'App',
   components: {
-    BuscarPorCedula
+    ActualizarCliente
   }
 }
 </script>

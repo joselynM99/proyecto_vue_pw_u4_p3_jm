@@ -5,6 +5,10 @@ export const obtenerPorCedulaFachada = async (cedula) => {
     return await obtenerPorCedula(cedula);
 }
 
+export const obtenerPorIdFachada = async (id) => {
+    return await obtenerPorId(id);
+}
+
 export const insertarFachada = async(body) => {
     await insertar(body);
 }
@@ -29,6 +33,11 @@ export const borrarPorCedulaFachada = (cedula) => {
 //No hace falta el await pero sí el async
 const obtenerPorCedula = async (cedula) => {
     const data = axios.get(`http://localhost:8081/API/Facturacion/V1/clientes/porCedula/${cedula}`).then(r => r.data)
+    return data
+}
+
+const obtenerPorId = async (id) => {
+    const data = axios.get(`http://localhost:8081/API/Facturacion/V1/clientes/${id}`).then(r => r.data)
     return data
 }
 
