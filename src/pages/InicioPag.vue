@@ -1,13 +1,13 @@
 <template >
     <div>
-        <h1>Bienvenido</h1>
+        <div class="alert alert-primary" role="alert">
+            Bienvenido!
+        </div>
     </div>
 </template>
 <script>
 export default {
-    
+
 }
 </script>
-<style >
-    
-</style>
+<style ></style>

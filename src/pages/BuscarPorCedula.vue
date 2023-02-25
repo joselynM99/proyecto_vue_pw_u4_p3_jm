@@ -3,7 +3,11 @@
         <h1>Buscar por cédula</h1>
         <h2>{{ id }}</h2>
         <h2>{{ id2 }}</h2>
-        <button @click="procesarGuardado">Procesar</button>
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+            <label for="floatingTextarea">Comments</label>
+        </div>
+        <button @click="procesarGuardado" type="button" class="btn btn-primary">Procesar</button>
         <input v-model="cedula" type="text">
         <button @click="consultarClientePorCedula">Consultar</button>
         <label for="">Id:</label>
@@ -81,9 +85,5 @@ label {
     margin-top: 15px;
 }
 
-button {
-    margin: 10px auto;
-    height: 25px;
-    width: 100px;
-}
+
 </style>
