@@ -50,7 +50,7 @@ const routes = [
 
     },
     {
-        path: '/buscar',
+        path: '/buscar/:idCliente',
 
         component: () => import(/* webpackChunkName: "BuscarPorCedula"*/ '@/pages/BuscarPorCedula.vue')
 
